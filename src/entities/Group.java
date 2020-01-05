@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -83,5 +84,26 @@ public class Group {
 		return true;
 	}
 
+	@Override
 
+	public String toString() {
+		
+		String returnString1 = "Group name : " + name;
+		String returnString2 = "\nTemplateList : ";
+		String returnString3 = "\nContact List : ";
+		
+		Iterator<GroupMessageTemplate> itrTemplate = templateList.iterator();
+		Iterator<Contact> itrContact = contactList.iterator();
+		
+		while (itrTemplate.hasNext()){
+			GroupMessageTemplate element = itrTemplate.next();
+			returnString2 += element.getTitle() + (itrTemplate.hasNext() ? " | " : "");
+		} 
+		while (itrContact.hasNext()){
+			Contact element = itrContact.next();
+			returnString3 += element.getName() + (itrContact.hasNext() ? " | " : "");
+		} 
+		
+		return returnString1 + "\n" + returnString2 + "\n" + returnString3;
+	}
 }

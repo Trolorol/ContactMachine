@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -75,8 +76,15 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [name=" + name + ", number=" + number + ", groupsList=" + groupsList + "]";
+		String returnString = "Contact name : " + name + "\nNumber : " + number + "\nGroupsList : ";
+		Iterator <Group> itr = groupsList.iterator();
+		while(itr.hasNext()) {
+	           Group element = itr.next();
+	           returnString += element.getName() + (itr.hasNext() ? " | " : "");
+	       }
+		
+		return returnString;
 	}
-
+	
 	
 }

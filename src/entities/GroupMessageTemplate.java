@@ -55,4 +55,10 @@ public class GroupMessageTemplate {
 		}
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Template title : " + title;
+	}
+	
 }
