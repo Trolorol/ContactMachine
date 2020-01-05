@@ -73,4 +73,10 @@ public class Contact {
 		return true; 
 	}
 
+	@Override
+	public String toString() {
+		return "Contact [name=" + name + ", number=" + number + ", groupsList=" + groupsList + "]";
+	}
+
+	
 }
