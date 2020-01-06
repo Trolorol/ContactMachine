@@ -2,21 +2,57 @@ package application.exec;
 
 import entities.Contact;
 import entities.EntitiesFacade;
+import service.serviceFacade;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		entities.EntitiesFacade.addContact("João Calapez", "915311412");
+		/******************************************************************/
+		/*************************    Contacts    *************************/
+		/******************************************************************/
+		System.out.println("**************** Contacts ****************");
+		/************************* Contact Creation *************************/
+		entities.EntitiesFacade.addContact("João Calapez", "910000001");
+		entities.EntitiesFacade.addContact("Ricardo Costa", "910000002");
+		entities.EntitiesFacade.addContact("José Silva", "910000003");
 		
+		/************************* Find contact *************************/
 		Contact find = entities.EntitiesFacade.findContact("915311413");
-		
-		
 		System.out.println(find);
+		System.out.println("-----------------Contact-----------------");
+		
+		/************************* Show All Contacts *************************/
+		System.out.println(entities.EntitiesFacade.showAllContacts());
 		
 		
+		/************************* Remove Contact *************************/
+		/*
+		System.out.println("-----------------Remove-----------------");
+		entities.EntitiesFacade.removeContact("910000003");
+		System.out.println(entities.EntitiesFacade.showAllContacts());
+		*/
 		
 		
+		/******************************************************************/
+		/*************************     Groups     *************************/
+		/******************************************************************/
+		System.out.println("***************** Groups *****************");
+		/************************* Group Creation *************************/
+		entities.EntitiesFacade.addGroup("Homens");
+		entities.EntitiesFacade.addGroup("Mulheres");
+		
+		/************************* Group ShowAll *************************/
+		System.out.println(entities.EntitiesFacade.showAllGroups());
+		
+		//!!!!!!!!!****FALTA O RESTANTE******!!!!!!!!!
+	
+		
+		/************************* WhatsApp Sender Testes *************************/
+		System.out.println("***************************************");
+		System.out.println("**************** Envio ****************");
+		service.serviceFacade.sendMessage("000", "+351915311412", entities.EntitiesFacade.showAllContacts().toString());
+	
 	}
 
 }
