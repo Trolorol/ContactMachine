@@ -7,11 +7,11 @@ import java.util.Set;
 public class Contact {
 
 	private String name;
-	private Integer number;
+	private String number;
 
 	private Set<Group> groupsList;
 
-	Contact(String name, Integer number) {
+	Contact(String name, String number) {
 
 		this.groupsList = new LinkedHashSet<Group>(); // Garantia que não há duplicação de grupos, Class abstract "Set",
 														// LinkedHashSet
@@ -19,7 +19,7 @@ public class Contact {
 		this.number = number;
 	}
 
-	Contact(String name, Integer number, Set<Group> groupsList) {
+	Contact(String name, String number, Set<Group> groupsList) {
 		this.name = name;
 		this.number = number;
 		this.groupsList = groupsList;
@@ -33,11 +33,11 @@ public class Contact {
 		this.name = name;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	void setNumber(Integer number) {
+	void setNumber(String number) {
 		this.number = number;
 	}
 	
