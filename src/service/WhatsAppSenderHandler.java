@@ -7,8 +7,8 @@ import com.twilio.type.PhoneNumber;
 public class WhatsAppSenderHandler {
 
 	// Find your Account Sid and Token at twilio.com/user/account
-	public static final String ACCOUNT_SID = "AC21f0bf83570f93129743463dfa78cfa3";
-	public static final String AUTH_TOKEN = "044fbb7acdf2b4e3f84ed96dad4ecf2a";
+	public static final String ACCOUNT_SID = "";
+	public static final String AUTH_TOKEN = "";
 
 	//service.serviceFacade.sendMessage("+1 415 523 8886", "+351915311412");
 	
