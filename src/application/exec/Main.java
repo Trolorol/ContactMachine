@@ -1,8 +1,7 @@
 package application.exec;
 
 import entities.Contact;
-import entities.EntitiesFacade;
-import service.serviceFacade;
+import service.WhatsAppSenderHandler;
 
 public class Main {
 
@@ -49,9 +48,10 @@ public class Main {
 	
 		
 		/************************* WhatsApp Sender Testes *************************/
+		WhatsAppSenderHandler.init();
 		System.out.println("***************************************");
 		System.out.println("**************** Envio ****************");
-		service.serviceFacade.sendMessage("000", "+351915311412", entities.EntitiesFacade.showAllContacts().toString());
+		service.serviceFacade.sendMessage("000", "+351915311412", "Teste");
 	
 	}
 
