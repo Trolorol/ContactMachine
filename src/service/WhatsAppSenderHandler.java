@@ -32,8 +32,8 @@ public class WhatsAppSenderHandler {
 			String delimiter = " ";
 
 			tempString = APIstr.split(delimiter);
-			ACCOUNT_SID = tempString[0].substring(0,34);
-			AUTH_TOKEN = tempString[1].substring(0,32);
+			ACCOUNT_SID = tempString[0];
+			AUTH_TOKEN = tempString[1];
 			
 			System.out.println("Using: \n SID: " + "|" + ACCOUNT_SID + "|" + "\n" + "AUTH: " + "|" + AUTH_TOKEN.substring(0,32) + "|");
 
