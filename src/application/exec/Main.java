@@ -51,7 +51,7 @@ public class Main {
 		WhatsAppSenderHandler.init();
 		System.out.println("***************************************");
 		System.out.println("**************** Envio ****************");
-		service.serviceFacade.sendMessage("000", "+351915311412", "Teste");
+		service.serviceFacade.sendMessage("000", "+351915311412", "O hugo é gay");
 	
 	}
 
