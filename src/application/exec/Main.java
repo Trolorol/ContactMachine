@@ -33,25 +33,44 @@ public class Main {
 		*/
 		
 		
+		/************************* Add contact to group *************************/
+		
+		
+		
+		
+		
+		
+		
 		/******************************************************************/
 		/*************************     Groups     *************************/
 		/******************************************************************/
 		System.out.println("***************** Groups *****************");
 		/************************* Group Creation *************************/
-		entities.EntitiesFacade.addGroup("Homens");
+		//entities.EntitiesFacade.addGroup("Homens");
 		entities.EntitiesFacade.addGroup("Mulheres");
 		
 		/************************* Group ShowAll *************************/
 		System.out.println(entities.EntitiesFacade.showAllGroups());
 		
-		//!!!!!!!!!****FALTA O RESTANTE******!!!!!!!!!
+		
+		
+		/******************************************************************/
+		/************************    Templates    *************************/
+		/******************************************************************/
+		System.out.println("*************** Templates ****************");
+		/************************ Template Creation ***********************/
+		entities.EntitiesFacade.groupAddTemplate("Titulo Template1", "Frase do Template", null); //LOLE
+		
+		
+		
+		
 	
 		
 		/************************* WhatsApp Sender Testes *************************/
 		WhatsAppSenderHandler.init();
 		System.out.println("***************************************");
 		System.out.println("**************** Envio ****************");
-		service.serviceFacade.sendMessage("000", "+351915311412", "O hugo é gay");
+		//service.serviceFacade.sendMessage("000", "+351915311412", "O hugo é gay");
 	
 	}
 

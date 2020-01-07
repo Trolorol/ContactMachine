@@ -70,6 +70,11 @@ public class Group {
 	public boolean hasTemplate(GroupMessageTemplate template) {
 		return this.templateList.contains(template);
 	}
+	
+	public Set<Contact> listContacts() {
+		return contactList;
+		
+	}
 
 	@Override
 	public boolean equals(Object group) {

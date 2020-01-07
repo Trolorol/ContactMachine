@@ -19,7 +19,7 @@ public class Contact {
 		this.number = number;
 	}
 
-	Contact(String name, String number, Set<Group> groupsList) {
+	Contact(String name, String number, Set <Group> groupsList) {
 		this.name = name;
 		this.number = number;
 		this.groupsList = groupsList;
@@ -51,6 +51,11 @@ public class Contact {
 	
 	public boolean isInGroup(Group group) {
 		return this.groupsList.contains(group);
+		
+	}
+	
+	public Set<Group> listGroups() {
+		return groupsList;
 		
 	}
 	
