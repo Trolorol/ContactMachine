@@ -1,6 +1,10 @@
 package application.exec;
 
+import java.util.Arrays;
+import java.util.Set;
+
 import entities.Contact;
+import entities.EntitiesFacade;
 import service.WhatsAppSenderHandler;
 
 public class Main {
@@ -12,18 +16,17 @@ public class Main {
 		/******************************************************************/
 		System.out.println("**************** Contacts ****************");
 		/************************* Contact Creation *************************/
-		entities.EntitiesFacade.addContact("João Calapez", "910000001");
-		entities.EntitiesFacade.addContact("Ricardo Costa", "910000002");
+		entities.EntitiesFacade.addContact("João Calapez", "915311412");
+		entities.EntitiesFacade.addContact("Joana Silva", "910000002");
 		entities.EntitiesFacade.addContact("José Silva", "910000003");
 		
 		/************************* Find contact *************************/
-		Contact find = entities.EntitiesFacade.findContact("915311413");
-		System.out.println(find);
+		//Contact find = entities.EntitiesFacade.findContact("915311413");
+		//System.out.println(find);
 		System.out.println("-----------------Contact-----------------");
 		
 		/************************* Show All Contacts *************************/
 		System.out.println(entities.EntitiesFacade.showAllContacts());
-		
 		
 		/************************* Remove Contact *************************/
 		/*
@@ -46,11 +49,16 @@ public class Main {
 		/******************************************************************/
 		System.out.println("***************** Groups *****************");
 		/************************* Group Creation *************************/
-		//entities.EntitiesFacade.addGroup("Homens");
+		entities.EntitiesFacade.addGroup("Homens");
 		entities.EntitiesFacade.addGroup("Mulheres");
-		
-		/************************* Group ShowAll *************************/
+		entities.EntitiesFacade.addContactToGroup("915311412", "Homens");
+		entities.EntitiesFacade.addContactToGroup("910000003", "Homens");
+		entities.EntitiesFacade.addContactToGroup("910000002", "Mulheres");
 		System.out.println(entities.EntitiesFacade.showAllGroups());
+
+
+		/************************* Group ShowAll *************************/
+		
 		
 		
 		
@@ -71,6 +79,7 @@ public class Main {
 		System.out.println("***************************************");
 		System.out.println("**************** Envio ****************");
 		//service.serviceFacade.sendMessage("000", "+351915311412", "O hugo é gay");
+
 	
 	}
 

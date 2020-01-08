@@ -42,9 +42,11 @@ public class EntitiesFacade {
 			Contact element = itrContact.next();
 
 			if (element.getNumber().equals(number)) {
+
 				return element;
 			}
 		}
+
 		return null;
 	}
 
@@ -73,12 +75,12 @@ public class EntitiesFacade {
 
 		while (itrGroup.hasNext()) {
 			Group element = itrGroup.next();
-				element.removeContact(c);
-				element.addContact(c2);
+			element.removeContact(c);
+			element.addContact(c2);
 		}
-		
+
 		contactList.remove(c);
-		contactList.add(c2); 
+		contactList.add(c2);
 
 	}
 
