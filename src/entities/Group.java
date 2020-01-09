@@ -60,7 +60,7 @@ public class Group {
 	}
 
 	void addTemplate(GroupMessageTemplate template) {
-		this.templateList.add(template);
+		templateList.add(template);
 	}
 
 	void removeTemplate(GroupMessageTemplate template) {
@@ -73,7 +73,11 @@ public class Group {
 	
 	public Set<Contact> listContacts() {
 		return contactList;
-		
+	}
+	
+	public Set<GroupMessageTemplate> listTemplates(){
+		return templateList;
+	
 	}
 
 	@Override

@@ -83,6 +83,49 @@ public class EntitiesFacade {
 		contactList.add(c2);
 
 	}
+	
+	public static void addTemplateToGroup(String title, String groupName) { 
+
+		GroupMessageTemplate gTemplate = findTemplate(title); //Recebe objeto do tipo GroupMessageTemplate
+		Group g = findGroup(groupName); //Recebe obejto do tipo Group 
+
+		
+		String titleT = gTemplate.getTitle();
+		String body = gTemplate.getBody();
+		
+		
+		
+		Iterator<GroupMessageTemplate> itrGroup = g.listTemplates().iterator();
+		
+		GroupMessageTemplate t1 = new GroupMessageTemplate(gTemplate.getTitle(), gTemplate.getBody(), g);
+		
+		
+		groupAddTemplate(gTemplate.getTitle(), gTemplate.getBody(), g);
+		
+		
+		
+		Group g2 = new Group(g.getName(), g.getContactList(), g.listTemplates());
+		g2.addTemplate(t1);
+
+		while (itrGroup.hasNext()) {
+			GroupMessageTemplate element = itrGroup.next();
+			element.removeContact(c);// Falta aqui alguma coisa
+			
+			element.addContact(c2);
+		}
+
+		contactList.remove(c);
+		contactList.add(c2);
+
+	}
+	
+	/*
+	 * 	GroupMessageTemplate(String title, String body, Group group) {
+		this.title = title;
+		this.body = body;
+		this.group = group;
+	}
+	 */
 
 	/************************* Groups management *************************/
 
@@ -165,4 +208,6 @@ public class EntitiesFacade {
 		return templateList;
 
 	}
+	
+
 }

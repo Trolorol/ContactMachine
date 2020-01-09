@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Set;
+
 public class GroupMessageTemplate {
 
 	private String title;
@@ -42,7 +44,7 @@ public class GroupMessageTemplate {
 	void setGroup(Group group) {
 		this.group = group;
 	}
-
+		
 	@Override
 	public boolean equals(Object template) {
 		if (this != template) {// Fazer ao contrário
