@@ -89,9 +89,11 @@ public class EntitiesFacade {
 		GroupMessageTemplate gTemplate = findTemplate(title); //Recebe objeto do tipo GroupMessageTemplate
 		Group g = findGroup(groupName); //Recebe obejto do tipo Group 
 
+		g.addTemplate(gTemplate);
 		
-		String titleT = gTemplate.getTitle();
-		String body = gTemplate.getBody();
+/*
+		
+		
 		
 		
 		
@@ -116,7 +118,7 @@ public class EntitiesFacade {
 
 		contactList.remove(c);
 		contactList.add(c2);
-
+#######################*/
 	}
 	
 	/*

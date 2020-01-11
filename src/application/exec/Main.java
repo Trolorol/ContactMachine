@@ -66,10 +66,18 @@ public class Main {
 		/************************    Templates    *************************/
 		/******************************************************************/
 		System.out.println("*************** Templates ****************");
+		
+		entities.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
 		/************************ Template Creation ***********************/
-		entities.EntitiesFacade.groupAddTemplate("Titulo Template1", "Frase do Template", null); //LOLE
+		//entities.EntitiesFacade.addTemplate(title, body);
+		
+		entities.EntitiesFacade.addTemplateToGroup("teste", "Homens");
 		
 		
+		System.out.println("###########################");
+		System.out.println(EntitiesFacade.showAllGroups());
+		System.out.println(EntitiesFacade.showAllContacts());
+		System.out.println("###########################");
 		
 		
 	
@@ -78,7 +86,7 @@ public class Main {
 		WhatsAppSenderHandler.init();
 		System.out.println("***************************************");
 		System.out.println("**************** Envio ****************");
-		service.ServiceFacade.sendMessage("000", "+351915311412", "O andre é gay");
+		//service.ServiceFacade.sendMessage("000", "+351915311412", "O andre é gay");
 
 	
 	}

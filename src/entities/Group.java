@@ -70,14 +70,14 @@ public class Group {
 	public boolean hasTemplate(GroupMessageTemplate template) {
 		return this.templateList.contains(template);
 	}
-	
+
 	public Set<Contact> listContacts() {
 		return contactList;
 	}
-	
-	public Set<GroupMessageTemplate> listTemplates(){
+
+	public Set<GroupMessageTemplate> listTemplates() {
 		return templateList;
-	
+
 	}
 
 	@Override
@@ -96,23 +96,23 @@ public class Group {
 	@Override
 
 	public String toString() {
-		
+
 		String returnString1 = "Group name : " + name;
 		String returnString2 = "\nTemplateList : ";
 		String returnString3 = "\nContact List : ";
-		
+
 		Iterator<GroupMessageTemplate> itrTemplate = templateList.iterator();
 		Iterator<Contact> itrContact = contactList.iterator();
-		
-		while (itrTemplate.hasNext()){
+
+		while (itrTemplate.hasNext()) {
 			GroupMessageTemplate element = itrTemplate.next();
 			returnString2 += element.getTitle() + (itrTemplate.hasNext() ? " | " : "");
-		} 
-		while (itrContact.hasNext()){
+		}
+		while (itrContact.hasNext()) {
 			Contact element = itrContact.next();
 			returnString3 += element.getName() + (itrContact.hasNext() ? " | " : "");
-		} 
-		
+		}
+
 		return returnString1 + "\n" + returnString2 + "\n" + returnString3;
 	}
 }
