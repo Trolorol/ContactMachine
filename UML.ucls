@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="application.exec.Main" project="ContactMachine" 
-    file="/ContactMachine/src/application/exec/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="application.Main" project="ContactMachine" 
+    file="/ContactMachine/src/application/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="129" y="-133"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -65,15 +65,15 @@
     </display>  
   </class>  
   <association id="8">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="9" name="groupsList">        
-        <position height="0" width="0" x="67" y="309"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="9" name="contactList">        
+        <position height="18" width="61" x="348" y="591"/>      
       </attribute>      
       <multiplicity id="10" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="67" y="309"/>      
+        <position height="16" width="21" x="237" y="584"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="11">    
@@ -89,50 +89,50 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="14">    
-    <end type="SOURCE" refId="2" navigable="false">      
+    <end type="SOURCE" refId="5" navigable="false">      
       <attribute id="15" name="contactList">        
-        <position height="18" width="61" x="348" y="591"/>      
+        <position height="0" width="0" x="26" y="117"/>      
       </attribute>      
       <multiplicity id="16" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="237" y="584"/>      
+        <position height="0" width="0" x="26" y="117"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="17">    
+  <association id="17">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="18" name="groupsList">        
+        <position height="0" width="0" x="67" y="309"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="67" y="309"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="21">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="18">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="19" name="contactList">        
-        <position height="0" width="0" x="26" y="117"/>      
-      </attribute>      
-      <multiplicity id="20" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="26" y="117"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
+  <association id="22">    
     <bendpoint x="770" y="481"/>    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="22" name="templateList">        
+      <attribute id="23" name="templateList">        
         <position height="18" width="65" x="869" y="535"/>      
       </attribute>      
-      <multiplicity id="23" minimum="0" maximum="2147483647">        
+      <multiplicity id="24" minimum="0" maximum="2147483647">        
         <position height="16" width="21" x="1045" y="506"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="24">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
   <dependency id="25">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="6"/>  

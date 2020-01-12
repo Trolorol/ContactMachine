@@ -50,19 +50,6 @@ public class EntitiesFacade {
 		return null;
 	}
 
-	/*
-	 * public static void showAllContacts() { Iterator<Contact> itrContact =
-	 * contactList.iterator();
-	 * 
-	 * while (itrContact.hasNext()) { Contact element = itrContact.next();
-	 * System.out.println("Nome: " + element.getName() + " | Numero: " +
-	 * element.getNumber()); } }
-	 */
-
-	public static Collection<Contact> showAllContacts() {
-		return contactList;
-	}
-
 	public static void addContactToGroup(String number, String groupName) { // Adicionar contacto existente a grupo
 
 		Contact c = findContact(number);
@@ -83,51 +70,10 @@ public class EntitiesFacade {
 		contactList.add(c2);
 
 	}
-	
-	public static void addTemplateToGroup(String title, String groupName) { 
 
-		GroupMessageTemplate gTemplate = findTemplate(title); //Recebe objeto do tipo GroupMessageTemplate
-		Group g = findGroup(groupName); //Recebe obejto do tipo Group 
-
-		g.addTemplate(gTemplate);
-		
-/*
-		
-		
-		
-		
-		
-		Iterator<GroupMessageTemplate> itrGroup = g.listTemplates().iterator();
-		
-		GroupMessageTemplate t1 = new GroupMessageTemplate(gTemplate.getTitle(), gTemplate.getBody(), g);
-		
-		
-		groupAddTemplate(gTemplate.getTitle(), gTemplate.getBody(), g);
-		
-		
-		
-		Group g2 = new Group(g.getName(), g.getContactList(), g.listTemplates());
-		g2.addTemplate(t1);
-
-		while (itrGroup.hasNext()) {
-			GroupMessageTemplate element = itrGroup.next();
-			element.removeContact(c);// Falta aqui alguma coisa
-			
-			element.addContact(c2);
-		}
-
-		contactList.remove(c);
-		contactList.add(c2);
-#######################*/
+	public static Collection<Contact> showAllContacts() {
+		return contactList;
 	}
-	
-	/*
-	 * 	GroupMessageTemplate(String title, String body, Group group) {
-		this.title = title;
-		this.body = body;
-		this.group = group;
-	}
-	 */
 
 	/************************* Groups management *************************/
 
@@ -167,15 +113,15 @@ public class EntitiesFacade {
 	}
 
 	/************************* Templates management *************************/
-
-	public static void groupAddTemplate(String title, String body, Group group) {
-		GroupMessageTemplate template = new GroupMessageTemplate(title, body, group);
+	public static void addTemplate(String title, String body) { // inicializa ponteiro de grupo a null
+		GroupMessageTemplate template = new GroupMessageTemplate(title, body);
 		templateList.add(template);
 
 	}
 
-	public static void addTemplate(String title, String body) { // inicializa ponteiro de grupo a null
-		GroupMessageTemplate template = new GroupMessageTemplate(title, body);
+	public static void groupAddTemplate(String title, String body, Group group) { // Açternativa ao addTemplate, cria já
+																					// agregado a um grupo
+		GroupMessageTemplate template = new GroupMessageTemplate(title, body, group);
 		templateList.add(template);
 
 	}
@@ -210,6 +156,12 @@ public class EntitiesFacade {
 		return templateList;
 
 	}
-	
 
+	public static void addTemplateToGroup(String title, String groupName) {
+
+		GroupMessageTemplate gTemplate = findTemplate(title); // Recebe objeto do tipo GroupMessageTemplate
+		Group g = findGroup(groupName); // Recebe obejto do tipo Group
+
+		g.addTemplate(gTemplate);
+	}
 }

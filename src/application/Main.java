@@ -1,9 +1,6 @@
-package application.exec;
+package application;
 
-import java.util.Arrays;
-import java.util.Set;
 
-import entities.Contact;
 import entities.EntitiesFacade;
 import service.WhatsAppSenderHandler;
 
