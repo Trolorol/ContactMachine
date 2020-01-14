@@ -14,10 +14,18 @@ import service.WhatsAppSenderHandler;
 
 public class Main extends Application {
 
+	
+	private static Stage mainStage;
+
+	
+	
 	@Override
 	public void start(Stage stage) {
+		
 		try {
-			Parent parent = FXMLLoader.load(getClass().getResource("/gui/MainWindow.fxml")); // class Parent é uma superClass da class AnchorPane
+			Parent parent = FXMLLoader.load(getClass().getResource("/gui/MainWindow.fxml")); // class Parent é uma
+																								// superClass da class
+																								// AnchorPane
 			Scene scene = new Scene(parent);
 			stage.setScene(scene);
 			stage.show();
@@ -27,8 +35,35 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+
 		launch(args);
+
 	}
+
+	public static void openforkWindow() {
+
+	}
+
+	public static void openContactManagementWindow() {
+
+	}
+
+	public static void openAddContactWindow() {
+
+	}
+
+	public static void openGroupManagementWindow() {
+
+	}
+
+	public static void openAddGroupWindow() {
+
+	}
+
+	public static void openconfirmWindow() {
+
+	}
+
 }
 
 /*

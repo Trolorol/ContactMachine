@@ -1,21 +1,25 @@
 package gui;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 
+import entities.Group;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 
 public class MainWindowController {
 	
-	@FXML
-	private Button management;
-	private Button send;
-	private ListView<String> contactList;
-	private ListView<String> groupList;
-	private ListView<String> templateList;
-	private TextField message;
+	
+	@FXML private Button management;
+	@FXML private Button send;
+	@FXML private ListView<String> contactList;
+	@FXML private ListView<String> groupList;
+	@FXML private ListView<String> templateList;
+	@FXML private TextField message;
 	
 	
 	
@@ -30,14 +34,15 @@ public class MainWindowController {
 		
 	}
 	
-	@FXML
 	
+	@FXML
 	public void showContactList() {
 		
 	}
 	
 	@FXML
-	public void showGroupList() {
+	public Collection<Group> showGroupList() {
+		return entities.EntitiesFacade.showAllGroups();
 		
 	}
 	
