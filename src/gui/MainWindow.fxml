@@ -4,19 +4,47 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainWindowController">
    <children>
-      <ListView layoutX="35.0" layoutY="58.0" prefHeight="553.0" prefWidth="200.0" />
-      <Button layoutX="41.0" layoutY="644.0" mnemonicParsing="false" text="Menage" />
-      <ListView layoutX="342.0" layoutY="58.0" prefHeight="152.0" prefWidth="510.0" />
-      <TextField layoutX="341.0" layoutY="428.0" prefHeight="183.0" prefWidth="510.0" />
-      <Text layoutX="111.0" layoutY="46.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts" />
-      <Text layoutX="577.0" layoutY="46.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groups" />
-      <ListView layoutX="342.0" layoutY="282.0" prefHeight="81.0" prefWidth="510.0" />
-      <Text layoutX="568.0" layoutY="256.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Templates" />
-      <Text layoutX="557.0" layoutY="416.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Final Message" />
-      <Button layoutX="809.0" layoutY="632.0" mnemonicParsing="false" text="Send" />
+      <ListView layoutX="35.0" layoutY="121.0" prefHeight="490.0" prefWidth="200.0" />
+      <Button layoutX="37.0" layoutY="625.0" mnemonicParsing="false" text="Manage">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <ListView layoutX="342.0" layoutY="121.0" prefHeight="152.0" prefWidth="510.0" />
+      <TextField layoutX="341.0" layoutY="459.0" prefHeight="152.0" prefWidth="510.0" />
+      <ListView layoutX="342.0" layoutY="321.0" prefHeight="81.0" prefWidth="510.0" />
+      <Button layoutX="778.0" layoutY="625.0" mnemonicParsing="false" text="Send">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Text layoutX="228.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WhatsApp Contact Machine 1.0">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="557.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groups">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="543.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Templates">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="526.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Final Message">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="97.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
