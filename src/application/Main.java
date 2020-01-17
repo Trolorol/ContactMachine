@@ -1,6 +1,6 @@
 package application;
 
-import java.io.IOException;
+import java.net.URL;
 
 import entities.Contact;
 import entities.EntitiesFacade;
@@ -9,29 +9,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import service.WhatsAppSenderHandler;
 
 public class Main extends Application {
 
-	
 	private static Stage mainStage;
 
-	
-	
 	@Override
 	public void start(Stage stage) {
-		
-		try {
-			Parent parent = FXMLLoader.load(getClass().getResource("/gui/MainWindow.fxml")); // class Parent é uma
-																								// superClass da class
-																								// AnchorPane
-			Scene scene = new Scene(parent);
-			stage.setScene(scene);
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		mainStage = stage;
+		Scene scene = new Scene(new Pane());
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		mainStage.setScene(scene);
+		openMainWindow();
+		//openAddContactWindow();
+		mainStage.show();
 	}
 
 	public static void main(String[] args) {
@@ -40,28 +34,53 @@ public class Main extends Application {
 
 	}
 
-	public static void openforkWindow() {
+	public static void openMainWindow() {
+		String urlStr = "../views/MainWindow.fxml";
+		windowChanger(urlStr);
+	}
 
+	public static void openforkWindow() {
+		String urlStr = "../views/ForkMenagementWindow.fxml";
+		windowChanger(urlStr);
 	}
 
 	public static void openContactManagementWindow() {
-
+		String urlStr = "../views/ContactsManagementWindow.fxml";
+		windowChanger(urlStr);
 	}
 
 	public static void openAddContactWindow() {
-
+		String urlStr = "/views/AddContactWindow.fxml";
+		windowChanger(urlStr);
 	}
 
 	public static void openGroupManagementWindow() {
-
+		String urlStr = "../views/GroupsManagementWindow.fxml";
+		windowChanger(urlStr);
 	}
 
 	public static void openAddGroupWindow() {
-
+		String urlStr = "../views/AddGroupWindow.fxml";
+		windowChanger(urlStr);
 	}
 
 	public static void openconfirmWindow() {
+		String urlStr = "../views/ConfirmWindow.fxml"; 
+		windowChanger(urlStr);
+	}
 
+	private static void windowChanger(String urlStr) {
+		try {
+			URL path = Main.class.getResource(urlStr);
+			System.out.println(path);
+			System.out.println(urlStr);
+			FXMLLoader loader = new FXMLLoader(path);
+			Parent root = loader.load();
+			mainStage.getScene().setRoot(root);
+			mainStage.sizeToScene();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

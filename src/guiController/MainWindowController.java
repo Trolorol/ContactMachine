@@ -1,32 +1,42 @@
-package gui;
+package guiController;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
 
+import entities.Contact;
 import entities.Group;
+import entities.GroupMessageTemplate;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
 
 public class MainWindowController {
 	
 	
-	@FXML private Button management;
-	@FXML private Button send;
-	@FXML private ListView<String> contactList;
-	@FXML private ListView<String> groupList;
-	@FXML private ListView<String> templateList;
-	@FXML private TextField message;
+	@FXML
+	private Button management;
+	
+	@FXML
+	private Button send;
+	
+	@FXML
+	private ListView<Group> contactList;
+	
+	@FXML
+	private ListView<Contact> groupList;
+	
+	@FXML
+	private ListView<GroupMessageTemplate> templateList;
+	
+	@FXML
+	private TextField message;
 	
 	
 	
 	
 	@FXML
 	public void btManagementAction() {
-		System.out.println("Click");
+		application.Main.openforkWindow();
 	}
 	
 	@FXML
