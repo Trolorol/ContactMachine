@@ -1,4 +1,4 @@
-package entities;
+package pt.iade.contact.model;
 
 import java.util.Set;
 

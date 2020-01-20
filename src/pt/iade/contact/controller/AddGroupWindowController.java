@@ -1,4 +1,4 @@
-package guiController;
+package pt.iade.contact.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,7 +19,7 @@ public class AddGroupWindowController {
 	
 	
 	public void confirmBt() {
-		application.Main.openGroupManagementWindow();
+		pt.iade.contact.Main.openGroupManagementWindow();
 	}
 	
 	

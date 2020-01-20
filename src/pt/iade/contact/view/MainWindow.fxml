@@ -7,16 +7,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiController.MainWindowController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.iade.contact.controller.MainWindowController">
    <children>
-      <ListView layoutX="35.0" layoutY="121.0" prefHeight="490.0" prefWidth="200.0" />
+      <ListView fx:id="contactList" layoutX="35.0" layoutY="121.0" prefHeight="490.0" prefWidth="200.0" />
       <Button fx:id="management" layoutX="37.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#btManagementAction" text="Manage">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <ListView layoutX="342.0" layoutY="121.0" onEditStart="#showGroupList" prefHeight="152.0" prefWidth="510.0" />
-      <TextField layoutX="341.0" layoutY="459.0" prefHeight="152.0" prefWidth="510.0" />
-      <ListView layoutX="342.0" layoutY="321.0" prefHeight="81.0" prefWidth="510.0" />
+      <ListView fx:id="groupList" layoutX="342.0" layoutY="121.0" prefHeight="152.0" prefWidth="510.0" />
+      <TextField fx:id="message" layoutX="341.0" layoutY="459.0" prefHeight="152.0" prefWidth="510.0" />
+      <ListView fx:id="templateList" layoutX="342.0" layoutY="321.0" prefHeight="81.0" prefWidth="510.0" />
       <Button layoutX="778.0" layoutY="625.0" mnemonicParsing="false" text="Send">
          <font>
             <Font size="20.0" />

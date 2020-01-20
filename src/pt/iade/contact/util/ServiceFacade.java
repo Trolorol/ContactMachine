@@ -1,4 +1,4 @@
-package service;
+package pt.iade.contact.util;
 
 public class ServiceFacade {
 	

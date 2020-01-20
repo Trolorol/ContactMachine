@@ -1,4 +1,4 @@
-package service;
+package pt.iade.contact.util;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -42,7 +42,7 @@ public class WhatsAppSenderHandler {
 		}
 	}
 
-	// service.serviceFacade.sendMessage("+1 415 523 8886", "+351915311412");
+	// pt.iade.contact.util.serviceFacade.sendMessage("+1 415 523 8886", "+351915311412");
 
 	static void sendText(String fromNumber, String toNumber, String finalMessage) {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);

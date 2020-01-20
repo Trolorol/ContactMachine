@@ -1,4 +1,4 @@
-package guiController;
+package pt.iade.contact.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,16 +15,16 @@ public class ForkWindowMenagementController {
 	private Button cancel;
 
 	public void openGroupsBt() {
-		application.Main.openGroupManagementWindow();
+		pt.iade.contact.Main.openGroupManagementWindow();
 	}
 
 	public void openContactsBt() {
-		application.Main.openContactManagementWindow();
+		pt.iade.contact.Main.openContactManagementWindow();
 
 	}
 
 	public void cancel() {
-		application.Main.openMainWindow();
+		pt.iade.contact.Main.openMainWindow();
 
 	}
 

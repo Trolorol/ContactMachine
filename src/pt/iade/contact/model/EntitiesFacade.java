@@ -1,4 +1,4 @@
-package entities;
+package pt.iade.contact.model;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -59,6 +59,9 @@ public class EntitiesFacade {
 
 		Contact c2 = new Contact(c.getName(), c.getNumber(), c.listGroups());
 		c2.addToGroup(g);
+		
+		g.removeContact(c);
+		g.addContact(c2);
 
 		while (itrGroup.hasNext()) {
 			Group element = itrGroup.next();
@@ -68,6 +71,7 @@ public class EntitiesFacade {
 
 		contactList.remove(c);
 		contactList.add(c2);
+		
 
 	}
 

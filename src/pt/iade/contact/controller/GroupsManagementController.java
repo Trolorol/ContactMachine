@@ -1,4 +1,4 @@
-package guiController;
+package pt.iade.contact.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,12 +16,12 @@ public class GroupsManagementController {
 
 	public void addGroup() {
 		
-		application.Main.openAddGroupWindow();
+		pt.iade.contact.Main.openAddGroupWindow();
 
 	}
 
 	public void editGroup() {
-		application.Main.openAddGroupWindow();
+		pt.iade.contact.Main.openAddGroupWindow();
 	}
 
 	public void deleteGroup() {
@@ -29,6 +29,6 @@ public class GroupsManagementController {
 	}
 
 	public void saveBt() {
-		application.Main.openMainWindow();
+		pt.iade.contact.Main.openMainWindow();
 	}
 }

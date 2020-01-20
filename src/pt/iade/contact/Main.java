@@ -1,20 +1,20 @@
-package application;
+package pt.iade.contact;
 
 import java.net.URL;
 
-import entities.Contact;
-import entities.EntitiesFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
 	private static Stage mainStage;
+	
+
+	
 
 	@Override
 	public void start(Stage stage) {
@@ -30,50 +30,66 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 
+		 pt.iade.contact.model.EntitiesFacade.addContact("João Calapez", "910000001");
+		 pt.iade.contact.model.EntitiesFacade.addContact("Joana Silva", "910000002");
+		 pt.iade.contact.model.EntitiesFacade.addContact("José Silva", "910000003");
+		 pt.iade.contact.model.EntitiesFacade.addGroup("Homens");
+		 pt.iade.contact.model.EntitiesFacade.addGroup("Mulheres");
+		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000001", "Homens");
+		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000002", "Mulheres");
+		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003", "Homens");
+		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
+		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste2", "Isto é assim porque é2");
+		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste", "Homens");
+		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste2", "Mulheres");
+		 
+		 System.out.println(pt.iade.contact.model.EntitiesFacade.findGroup("Homens"));
+		
+		
 		launch(args);
 
 	}
-
+// TODO: Set base path as constant in class
 	public static void openMainWindow() {
-		String urlStr = "../views/MainWindow.fxml";
+		String urlStr = "view/MainWindow.fxml";
 		windowChanger(urlStr);
 	}
 
 	public static void openforkWindow() {
-		String urlStr = "../views/ForkMenagementWindow.fxml";
+		String urlStr = "view/ForkMenagementWindow.fxml";
 		windowChanger(urlStr);
 	}
 
 	public static void openContactManagementWindow() {
-		String urlStr = "../views/ContactsManagementWindow.fxml";
+		String urlStr = "view/ContactsManagementWindow.fxml";
 		windowChanger(urlStr);
 	}
 
 	public static void openAddContactWindow() {
-		String urlStr = "/views/AddContactWindow.fxml";
+		String urlStr = "view/AddContactWindow.fxml";
 		windowChanger(urlStr);
 	}
+	
 
 	public static void openGroupManagementWindow() {
-		String urlStr = "../views/GroupsManagementWindow.fxml";
+		String urlStr = "view/GroupsManagementWindow.fxml";
 		windowChanger(urlStr);
 	}
 
 	public static void openAddGroupWindow() {
-		String urlStr = "../views/AddGroupWindow.fxml";
+		String urlStr = "view/AddGroupWindow.fxml";
 		windowChanger(urlStr);
 	}
 
 	public static void openconfirmWindow() {
-		String urlStr = "../views/ConfirmWindow.fxml"; 
+		String urlStr = "view/ConfirmWindow.fxml"; 
 		windowChanger(urlStr);
 	}
+	
 
 	private static void windowChanger(String urlStr) {
 		try {
 			URL path = Main.class.getResource(urlStr);
-			System.out.println(path);
-			System.out.println(urlStr);
 			FXMLLoader loader = new FXMLLoader(path);
 			Parent root = loader.load();
 			mainStage.getScene().setRoot(root);
@@ -82,6 +98,8 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+	
+
 
 }
 
@@ -89,38 +107,38 @@ public class Main extends Application {
  * 
  * System.out.println("**************** Contacts ****************");
  * 
- * entities.EntitiesFacade.addContact("João Calapez", "915311412");
- * entities.EntitiesFacade.addContact("Joana Silva", "910000002");
- * entities.EntitiesFacade.addContact("José Silva", "910000003");
+ * pt.iade.contact.model.EntitiesFacade.addContact("João Calapez", "915311412");
+ * pt.iade.contact.model.EntitiesFacade.addContact("Joana Silva", "910000002");
+ * pt.iade.contact.model.EntitiesFacade.addContact("José Silva", "910000003");
  * 
  * 
- * Contact find = entities.EntitiesFacade.findContact("915311413");
+ * Contact find = pt.iade.contact.model.EntitiesFacade.findContact("915311413");
  * System.out.println(find);
  * System.out.println("-----------------Contact-----------------");
  * 
  * 
- * System.out.println(entities.EntitiesFacade.showAllContacts());
+ * System.out.println(pt.iade.contact.model.EntitiesFacade.showAllContacts());
  * 
  * 
  * System.out.println("-----------------Remove-----------------");
- * entities.EntitiesFacade.removeContact("910000003");
- * System.out.println(entities.EntitiesFacade.showAllContacts());
+ * pt.iade.contact.model.EntitiesFacade.removeContact("910000003");
+ * System.out.println(pt.iade.contact.model.EntitiesFacade.showAllContacts());
  * 
  * 
  * System.out.println("***************** Groups *****************");
- * entities.EntitiesFacade.addGroup("Homens");
- * entities.EntitiesFacade.addGroup("Mulheres");
- * entities.EntitiesFacade.addContactToGroup("915311412", "Homens");
- * entities.EntitiesFacade.addContactToGroup("910000003", "Homens");
- * entities.EntitiesFacade.addContactToGroup("910000002", "Mulheres");
- * System.out.println(entities.EntitiesFacade.showAllGroups());
+ * pt.iade.contact.model.EntitiesFacade.addGroup("Homens");
+ * pt.iade.contact.model.EntitiesFacade.addGroup("Mulheres");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("915311412", "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003", "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000002", "Mulheres");
+ * System.out.println(pt.iade.contact.model.EntitiesFacade.showAllGroups());
  * 
  * 
  * 
  * System.out.println("*************** Templates ****************");
  * 
- * entities.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
- * entities.EntitiesFacade.addTemplateToGroup("teste", "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
+ * pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste", "Homens");
  * 
  * 
  * System.out.println("###########################");
@@ -132,7 +150,7 @@ public class Main extends Application {
  * WhatsAppSenderHandler.init();
  * System.out.println("***************************************");
  * System.out.println("**************** Envio ****************");
- * //service.ServiceFacade.sendMessage("000", "+351915311412", "O andre é gay");
+ * //pt.iade.contact.util.ServiceFacade.sendMessage("000", "+351915311412", "O andre é gay");
  * 
  * 
  * }

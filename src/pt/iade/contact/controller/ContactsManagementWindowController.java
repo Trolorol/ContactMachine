@@ -1,6 +1,7 @@
-package guiController;
+package pt.iade.contact.controller;
 
-import entities.Contact;
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import pt.iade.contact.model.Contact;
 
 public class ContactsManagementWindowController {
 
@@ -27,10 +29,10 @@ public class ContactsManagementWindowController {
 	@FXML
 	private ListView<Contact> contactList;
 	
-	public void addContactBt(ActionEvent event) throws Exception { 
+	/*public void addContactBt(ActionEvent event) throws Exception { 
 		               
 		    try {
-		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/AddContactWindow.fxml"));
+		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../pt.iade.contact.view/AddContactWindow.fxml"));
 		        Parent root1 = (Parent) fxmlLoader.load();
 		        Stage stage = new Stage();
 		        stage.setScene(new Scene(root1));  
@@ -38,14 +40,25 @@ public class ContactsManagementWindowController {
 		    } catch(Exception e) {
 		        e.printStackTrace();
 		    }
-		}
-		
+		}*/
+	
+	public void addContactBt() throws IOException
+	{
+	        Parent part = FXMLLoader.load(getClass().getResource("../view/AddContactWindow.fxml"));
+	        Stage stage = new Stage();
+	        Scene scene = new Scene(part);
+	        stage.setScene(scene);
+	        stage.show();
+	}
+	
+
 	
 	// implentar metodo de abrir addContact numa nova janela.
 	public void editContactBt() {
 		System.out.println("Click");
-		application.Main.openAddContactWindow();
+		pt.iade.contact.Main.openAddContactWindow();
 		System.out.println("Click");
+	
 		
 	}
 	public void deleteContactBt() {
@@ -54,7 +67,7 @@ public class ContactsManagementWindowController {
 	}
 	public void saveBt() {
 		System.out.println("Click");
-		application.Main.openMainWindow();
+		pt.iade.contact.Main.openMainWindow();
 		System.out.println("Click");
 		
 	}

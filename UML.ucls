@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="entities.GroupMessageTemplate" project="ContactMachine" 
-    file="/ContactMachine/src/entities/GroupMessageTemplate.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="pt.iade.contact.model.GroupMessageTemplate" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/model/GroupMessageTemplate.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1190" y="458"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="entities.Group" project="ContactMachine" 
-    file="/ContactMachine/src/entities/Group.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="pt.iade.contact.model.Group" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/model/Group.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="733" y="599"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="entities.Contact" project="ContactMachine" 
-    file="/ContactMachine/src/entities/Contact.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="pt.iade.contact.model.Contact" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/model/Contact.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="138" y="540"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="application.Main" project="ContactMachine" 
-    file="/ContactMachine/src/application/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="pt.iade.contact.Main" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="129" y="-133"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="entities.EntitiesFacade" project="ContactMachine" 
-    file="/ContactMachine/src/entities/EntitiesFacade.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="pt.iade.contact.model.EntitiesFacade" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/model/EntitiesFacade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="458" y="177"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="service.WhatsAppSenderHandler" project="ContactMachine" 
-    file="/ContactMachine/src/service/WhatsAppSenderHandler.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="pt.iade.contact.util.WhatsAppSenderHandler" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/util/WhatsAppSenderHandler.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="923" y="-25"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="service.ServiceFacade" project="ContactMachine" 
-    file="/ContactMachine/src/service/ServiceFacade.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="pt.iade.contact.util.ServiceFacade" project="ContactMachine" 
+    file="/ContactMachine/src/pt/iade/contact/util/ServiceFacade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="773" y="-164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -65,88 +65,80 @@
     </display>  
   </class>  
   <association id="8">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="contactList">        
-        <position height="18" width="61" x="348" y="591"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="9" name="groupsList">        
+        <position height="0" width="0" x="67" y="309"/>      
       </attribute>      
       <multiplicity id="10" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="237" y="584"/>      
+        <position height="0" width="0" x="67" y="309"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="11">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="12" name="groupList">        
-        <position height="0" width="0" x="174" y="139"/>      
-      </attribute>      
-      <multiplicity id="13" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="174" y="139"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="14">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="15" name="contactList">        
-        <position height="0" width="0" x="26" y="117"/>      
-      </attribute>      
-      <multiplicity id="16" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="26" y="117"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="17">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="18" name="groupsList">        
-        <position height="0" width="0" x="67" y="309"/>      
-      </attribute>      
-      <multiplicity id="19" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="67" y="309"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="20">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <dependency id="21">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="22">    
     <bendpoint x="770" y="481"/>    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="23" name="templateList">        
+      <attribute id="12" name="templateList">        
         <position height="18" width="65" x="869" y="535"/>      
       </attribute>      
-      <multiplicity id="24" minimum="0" maximum="2147483647">        
+      <multiplicity id="13" minimum="0" maximum="2147483647">        
         <position height="16" width="21" x="1045" y="506"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="25">    
+  <dependency id="14">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="26">    
+  <association id="15">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="16" name="groupList">        
+        <position height="0" width="0" x="174" y="139"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="174" y="139"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="27" name="group">        
+      <attribute id="19" name="group">        
         <position height="0" width="0" x="67" y="309"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
+      <multiplicity id="20" minimum="0" maximum="1">        
         <position height="0" width="0" x="67" y="309"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="22" name="contactList">        
+        <position height="0" width="0" x="26" y="117"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="26" y="117"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="24">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="25" name="contactList">        
+        <position height="18" width="61" x="348" y="591"/>      
+      </attribute>      
+      <multiplicity id="26" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="237" y="584"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

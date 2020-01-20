@@ -1,4 +1,4 @@
-package entities;
+package pt.iade.contact.model;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -94,7 +94,13 @@ public class Group {
 	}
 
 	@Override
-
+/*
+	public String toString() {
+		return name;
+		
+	}
+	*/
+	
 	public String toString() {
 
 		String returnString1 = "Group name : " + name;
@@ -115,4 +121,5 @@ public class Group {
 
 		return returnString1 + "\n" + returnString2 + "\n" + returnString3;
 	}
+	
 }

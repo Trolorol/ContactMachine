@@ -1,4 +1,4 @@
-package guiController;
+package pt.iade.contact.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
