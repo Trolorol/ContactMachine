@@ -81,7 +81,17 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		String returnString = "Contact name : " + name + "\nNumber : " + number + "\nGroupsList : ";
+
+		
+		return name + "\n" + number;
+	}
+	
+	
+	/*
+	@Override
+	public String toString() {
+		//String returnString = "Contact name : " + name + "\nNumber : " + number + "\nGroupsList : ";
+		String returnString =  name + "\n" + number;
 		Iterator <Group> itr = groupsList.iterator();
 		while(itr.hasNext()) {
 	           Group element = itr.next();
@@ -90,6 +100,6 @@ public class Contact {
 		
 		return returnString;
 	}
-	
+	*/
 	
 }

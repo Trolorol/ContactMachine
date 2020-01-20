@@ -103,23 +103,23 @@ public class Group {
 	
 	public String toString() {
 
-		String returnString1 = "Group name : " + name;
-		String returnString2 = "\nTemplateList : ";
-		String returnString3 = "\nContact List : ";
+		String returnString1 = "Name : " + name;
+		String returnString2 = "\nTemplates: ";
+		//String returnString3 = "\nContact List : ";
 
 		Iterator<GroupMessageTemplate> itrTemplate = templateList.iterator();
 		Iterator<Contact> itrContact = contactList.iterator();
 
 		while (itrTemplate.hasNext()) {
 			GroupMessageTemplate element = itrTemplate.next();
-			returnString2 += element.getTitle() + (itrTemplate.hasNext() ? " | " : "");
+			returnString2 += element.getTitle() + (itrTemplate.hasNext() ? ", " : "");
 		}
-		while (itrContact.hasNext()) {
+		/*while (itrContact.hasNext()) {
 			Contact element = itrContact.next();
 			returnString3 += element.getName() + (itrContact.hasNext() ? " | " : "");
-		}
+		}*/
 
-		return returnString1 + "\n" + returnString2 + "\n" + returnString3;
+		return returnString1 + "\n" + returnString2; //+ "\n" + returnString3;
 	}
 	
 }

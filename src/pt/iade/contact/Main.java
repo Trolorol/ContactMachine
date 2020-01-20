@@ -40,8 +40,10 @@ public class Main extends Application {
 		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003", "Homens");
 		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
 		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste2", "Isto é assim porque é2");
+		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste3", "Isto é assim porque é3");
 		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste", "Homens");
 		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste2", "Mulheres");
+		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste3", "Homens");
 		 
 		 System.out.println(pt.iade.contact.model.EntitiesFacade.findGroup("Homens"));
 		
