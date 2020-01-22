@@ -7,19 +7,11 @@ import java.util.Set;
 
 public class Contact implements Serializable {
 
-
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1275999734839815529L;
 	private String name;
 	private String number;
-
 	private Set<Group> groupsList;
 
-	
-	
 	/**
 	 * 
 	 * @param name
@@ -28,9 +20,7 @@ public class Contact implements Serializable {
 	 * Method uses LinkedHashSet, abstract Class of Set, this insures that are no duplicate objects in the Set.
 	 */
 	Contact(String name, String number) {
-
-		this.groupsList = new LinkedHashSet<Group>();
-														
+		this.groupsList = new LinkedHashSet<Group>();											
 		this.name = name;
 		this.number = number;
 	}
@@ -59,21 +49,20 @@ public class Contact implements Serializable {
 	
 	void addToGroup(Group group) {
 		this.groupsList.add(group);
-		
 	}
+	
 	void removeFromGroup(Group group) {
 		this.groupsList.remove(group);
 	}
 	
 	public boolean isInGroup(Group group) {
 		return this.groupsList.contains(group);
-		
 	}
 	
 	public Set<Group> listGroups() {
-		return groupsList;
-		
+		return groupsList;	
 	}
+
 	@Override
 	public boolean equals (Object contact) {
 		if (this != contact) {
@@ -96,7 +85,7 @@ public class Contact implements Serializable {
 		return name + "\n" + number;
 	}
 	
-	
+}
 	/*
 	@Override
 	public String toString() {
@@ -112,4 +101,4 @@ public class Contact implements Serializable {
 	}
 	*/
 	
-}
+

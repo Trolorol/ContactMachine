@@ -17,7 +17,7 @@ import javafx.scene.control.ListView;
 import pt.iade.contact.Main;
 import pt.iade.contact.model.Group;
 
-public class GroupsManagementController implements Initializable{
+public class GroupsManagementController implements Initializable {
 
 	@FXML
 	private Button addGroupBt;
@@ -27,43 +27,51 @@ public class GroupsManagementController implements Initializable{
 	private Button deleteGroupBt;
 	@FXML
 	private Button saveBt;
-	
 	@FXML
 	private ListView<Group> groupList;
 	private ListProperty<Group> groupListProperty;
-	
-	
-	
+
+	/*
+	 * initialize method was overridden in order to transform Sets in ArraysLists
+	 * This method will create an ArrayList Group type, then it will call the method .showAllGroups from Main.facade
+	 * in order to create a similar ArrayList from the set List located in Main.facade.
+	 * The ArrayList will then be showed by FXCollections.
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		ArrayList<Group> groupListAux =  new ArrayList<Group> (Main.facade.showAllGroups());
-	
+		ArrayList<Group> groupListAux = new ArrayList<Group>(Main.facade.showAllGroups());
 		this.groupListProperty = new SimpleListProperty<Group>();
 		this.groupList.itemsProperty().bind(this.groupListProperty);
 		this.groupListProperty.set(FXCollections.observableArrayList(groupListAux));
-	
 	}
 
 	public void addGroup() {
-		
 		pt.iade.contact.Main.openAddGroupWindow();
-
 	}
 
-	public void editGroup() {
+	/*
+	 * TODO: editGroup method will open a new window and has to pass the selected data in current window:
+	 * @param groupName -> String name = groupList.getSelectionModel().getSelectedItem().getName();
+	 * The EditGroupWindow will then grab the passed name and will display possible editable info.
+	 */
+	public void editGroup() { // How to pass dat , segunda solução é fazer segunda janela e segundo
+								// controlador
 		pt.iade.contact.Main.openAddGroupWindow();
 	}
 
 	public void deleteGroup() {
 		String name = groupList.getSelectionModel().getSelectedItem().getName();
 		Main.facade.removeGroup(name);
-
 	}
 
+	/*
+	 * saveBt method will trigger a Serializable action, storing a facade Object in a file located in /data/state.dat
+	 * This ensures all data created from the facade is stored in state.dat file
+	 */
 	public void saveBt() {
 		ObjectOutputStream oos;
 		try {
-			oos = new ObjectOutputStream(new FileOutputStream(System.getProperty("user.dir")+"/data/state.dat"));
+			oos = new ObjectOutputStream(new FileOutputStream(System.getProperty("user.dir") + "/data/state.dat"));
 			oos.writeObject(Main.facade);
 			oos.close();
 		} catch (IOException e) {

@@ -7,13 +7,8 @@ import java.util.Set;
 
 public class Group implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6584675298533575714L;
-
 	private String name;
-
 	private Set<Contact> contactList;
 	private Set<GroupMessageTemplate> templateList;
 
@@ -83,7 +78,6 @@ public class Group implements Serializable {
 
 	public Set<GroupMessageTemplate> listTemplates() {
 		return templateList;
-
 	}
 
 	@Override
@@ -104,13 +98,6 @@ public class Group implements Serializable {
 		return Objects.hash(name, contactList, templateList);
 	}
 
-
-/*
-	public String toString() {
-		return name;
-		
-	}
-	*/
 	@Override
 	public String toString() {
 		return name;

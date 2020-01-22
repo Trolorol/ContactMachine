@@ -5,9 +5,6 @@ import java.util.Objects;
 
 public class GroupMessageTemplate implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7914001267049242062L;
 	private String title;
 	private String body;
@@ -61,10 +58,12 @@ public class GroupMessageTemplate implements Serializable {
 		}
 		return true;
 	}
+	
 	@Override	
 	public int hashCode() {
 		return Objects.hash(title, body, group);
 	}
+	
 	@Override
 	public String toString() {
 		return title;

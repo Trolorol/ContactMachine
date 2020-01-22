@@ -14,11 +14,6 @@ public class WhatsAppSenderHandler {
 	// Find your Account Sid and Token at twilio.com/user/account
 	private static String ACCOUNT_SID = "";
 	private static String AUTH_TOKEN = "";
-
-	
-	
-	
-	
 	/**
 	 * Initialization of Twilio API via text file located in local storage
 	 * TODO: Change auth method:
@@ -28,26 +23,17 @@ public class WhatsAppSenderHandler {
 	 * -Option 4 Hardcoded (Only if theres no time!!!!)
 	 */
 	public static void init() {
-
-		
 		String filePath = "C:\\Users\\coelh\\Documents\\twilioAPI.txt";
-
 		StringBuilder contentBuilder = new StringBuilder();
-
 		try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
 			stream.forEach(s -> contentBuilder.append(s).append("\n"));
-
 			String APIstr = contentBuilder.toString();
-
 			String[] tempString;
 			String delimiter = " ";
-
 			tempString = APIstr.split(delimiter);
 			ACCOUNT_SID = tempString[0];
 			AUTH_TOKEN = tempString[1];
-			
 			System.out.println("Using: \n SID: " + "|" + ACCOUNT_SID + "|" + "\n" + "AUTH: " + "|" + AUTH_TOKEN.substring(0,32) + "|");
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,18 +43,13 @@ public class WhatsAppSenderHandler {
 
 	static void sendText(String fromNumber, String toNumber, String finalMessage) {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-		
 		System.out.println(ACCOUNT_SID);
 		System.out.println(AUTH_TOKEN);
-
 		fromNumber = "whatsapp:+14155238886";
 		toNumber = "whatsapp:" + toNumber;
-
 		System.out.println("To: " + toNumber + "\nFrom: " + fromNumber);
-
 		Message message = Message.creator(new com.twilio.type.PhoneNumber(toNumber),
 				new com.twilio.type.PhoneNumber(fromNumber), finalMessage).create();
-
 		System.out.println(message.getSid());
 	}
 }

@@ -30,47 +30,52 @@ public class MainWindowController implements Initializable{
 	
 	@FXML
 	private Button management;
-	
 	@FXML
 	private Button send;
-	
 	@FXML
 	private ListView<Group> groupList;
 	private ListProperty<Group> groupListProperty;
-	
 	@FXML
 	private ListView<Contact> contactList;
 	private ListProperty<Contact> contactListProperty;
-	
 	@FXML
 	private ListView<GroupMessageTemplate> templateList;
 	private ListProperty<GroupMessageTemplate> templateListProperty;
-	
 	@FXML
 	private TextField message;
 	
-	
+	/*
+	 * initialize method was overridden in order to transform Sets in ArraysLists
+	 * This method will create ArraysLists from Contact and Group types, then it will call the method .showAllContacts and .showAllGroups from Main.facade
+	 * in order to create a similar ArrayList from the set List located in Main.facade.
+	 * The ArraysLists will then be showed by FXCollections.
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) { //TODO clear selection button
 		ArrayList<Contact> contactListAux = new ArrayList<Contact> (Main.facade.showAllContacts());
 		ArrayList<Group> groupListAux = new ArrayList<Group> (Main.facade.showAllGroups());
 		
-		
+		//Contact Set conversion to ArrayList for JavaFx display.
 		this.contactListProperty = new SimpleListProperty<Contact>();
 		this.contactList.itemsProperty().bind(this.contactListProperty);
 		this.contactListProperty.set(FXCollections.observableArrayList(contactListAux));
 		
+		//Group Set conversion to ArrayList for JavaFx display.
 		this.groupListProperty = new SimpleListProperty<Group>();
 		this.groupList.itemsProperty().bind(this.groupListProperty);
 		this.groupListProperty.set(FXCollections.observableArrayList(groupListAux));
 		 
+		//GroupMessageTemplate Set conversion to ArrayList for JavaFx display.
 		this.templateListProperty = new SimpleListProperty<GroupMessageTemplate>();
 		this.templateList.itemsProperty().bind(this.templateListProperty);
 		
 		
 		
-		
-		this.groupList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Group>() {
+		/*
+		 * Implemented method to display Contacts and templates aggregated to the selected Group in MainWindow.
+		 * changed method was overridden in order to establish a new listener.
+		 */
+		this.groupList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Group>() { //O que faz quando se seleciona um grupo na main window
 			@Override
 			public void changed(ObservableValue<? extends Group> observable, Group oldValue, Group newValue) {
 				ArrayList<GroupMessageTemplate> templateListAux = new ArrayList<GroupMessageTemplate> (newValue.getTemplateList());
@@ -82,8 +87,11 @@ public class MainWindowController implements Initializable{
 			}
 		});
 		
-		
-		this.templateList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GroupMessageTemplate>() {
+		/*
+		 * Implemented method to display selected template in TextField in MainWindow
+		 * changed method was overridden in order to establish a new listner.
+		 */
+		this.templateList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GroupMessageTemplate>() { // O que faz quando se seleciona um template 
 			@Override
 			public void changed(ObservableValue<? extends GroupMessageTemplate> observable, GroupMessageTemplate oldValue, GroupMessageTemplate newValue) {
 				String messageText = "";
@@ -95,14 +103,13 @@ public class MainWindowController implements Initializable{
 		});
 	}
 	
+
 	/*
+	 * method to control the Management Button shown in Main widow, this opens a for window to select Group or Contacts Management.
+	 * TODO: Fork window has to close after operation Selection, see ForkWindowManagementController in controller package.
+	 */
 	@FXML
-	public void btManagementAction() {
-		pt.iade.contact.Main.openforkWindow();
-	}
-	*/
-	@FXML
-	public void btManagementAction() throws IOException //TODO Fork window has to close after selection.
+	public void btManagementAction() throws IOException
 	{
 	        Parent part = FXMLLoader.load(getClass().getResource("../view/ForkMenagementWindow.fxml"));
 	        Stage stage = new Stage();
@@ -111,9 +118,16 @@ public class MainWindowController implements Initializable{
 	        stage.show();
 	}
 	
-	
+	/*
+	 * Send Button, this will pass data to service Facade.
+	 * TODO: this action will recive a Set of contacts, is missing a iterator to send one message to all contacts in set.
+	 */
 	@FXML
 	public void btSendAction() {
+		// vou buscar o grupo selecion
+		// vou a text box buscar a mensagem 
+		// for loop para enviar mensagem 
+		
 		
 	}
 	
