@@ -8,8 +8,8 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.iade.contact.controller.GroupsManagementController">
    <children>
-      <ListView layoutX="74.0" layoutY="58.0" prefHeight="585.0" prefWidth="669.0" />
-      <Button layoutX="807.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#addGroup" text="+" textAlignment="CENTER">
+      <ListView fx:id="groupList" layoutX="74.0" layoutY="58.0" prefHeight="585.0" prefWidth="669.0" />
+      <Button fx:id="addGroupBt" layoutX="807.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#addGroup" text="+" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>
@@ -17,12 +17,12 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="802.0" layoutY="631.0" mnemonicParsing="false" onMouseClicked="#saveBt" text="Save">
+      <Button fx:id="saveBt" layoutX="802.0" layoutY="631.0" mnemonicParsing="false" onMouseClicked="#saveBt" text="Save">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Button layoutX="807.0" layoutY="133.0" mnemonicParsing="false" onMouseClicked="#editGroup" prefHeight="57.0" prefWidth="55.0" text="E" textAlignment="CENTER">
+      <Button fx:id="editGroupBt" layoutX="807.0" layoutY="133.0" mnemonicParsing="false" onMouseClicked="#editGroup" prefHeight="57.0" prefWidth="55.0" text="E" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>
@@ -30,7 +30,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button layoutX="807.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#deleteGroup" prefHeight="57.0" prefWidth="55.0" text="D" textAlignment="CENTER">
+      <Button fx:id="deleteGroupBt" layoutX="807.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#deleteGroup" prefHeight="57.0" prefWidth="55.0" text="D" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>

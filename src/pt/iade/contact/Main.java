@@ -1,5 +1,8 @@
 package pt.iade.contact;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 
 import javafx.application.Application;
@@ -8,13 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import pt.iade.contact.model.EntitiesFacade;
 
 public class Main extends Application {
 
 	private static Stage mainStage;
-	
 
-	
+	public static EntitiesFacade facade;
 
 	@Override
 	public void start(Stage stage) {
@@ -24,33 +27,28 @@ public class Main extends Application {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		mainStage.setScene(scene);
 		openMainWindow();
-		//openAddContactWindow();
+		// openAddContactWindow();
 		mainStage.show();
 	}
 
 	public static void main(String[] args) {
 
-		 pt.iade.contact.model.EntitiesFacade.addContact("João Calapez", "910000001");
-		 pt.iade.contact.model.EntitiesFacade.addContact("Joana Silva", "910000002");
-		 pt.iade.contact.model.EntitiesFacade.addContact("José Silva", "910000003");
-		 pt.iade.contact.model.EntitiesFacade.addGroup("Homens");
-		 pt.iade.contact.model.EntitiesFacade.addGroup("Mulheres");
-		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000001", "Homens");
-		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000002", "Mulheres");
-		 pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003", "Homens");
-		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
-		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste2", "Isto é assim porque é2");
-		 pt.iade.contact.model.EntitiesFacade.addTemplate("teste3", "Isto é assim porque é3");
-		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste", "Homens");
-		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste2", "Mulheres");
-		 pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste3", "Homens");
-		 
-		 System.out.println(pt.iade.contact.model.EntitiesFacade.findGroup("Homens"));
-		
-		
+		ObjectInputStream ois;
+		try {
+			ois = new ObjectInputStream(new FileInputStream("./data/state.dat"));
+			facade = (EntitiesFacade) ois.readObject();
+			ois.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 		launch(args);
 
 	}
+
 // TODO: Set base path as constant in class
 	public static void openMainWindow() {
 		String urlStr = "view/MainWindow.fxml";
@@ -71,7 +69,6 @@ public class Main extends Application {
 		String urlStr = "view/AddContactWindow.fxml";
 		windowChanger(urlStr);
 	}
-	
 
 	public static void openGroupManagementWindow() {
 		String urlStr = "view/GroupsManagementWindow.fxml";
@@ -84,10 +81,14 @@ public class Main extends Application {
 	}
 
 	public static void openconfirmWindow() {
-		String urlStr = "view/ConfirmWindow.fxml"; 
+		String urlStr = "view/ConfirmWindow.fxml";
 		windowChanger(urlStr);
 	}
 	
+	public static void openAddTemplateWindow() {
+		String urlStr = "view/AddTemplateWindow.fxml";
+		windowChanger(urlStr);
+	}
 
 	private static void windowChanger(String urlStr) {
 		try {
@@ -100,12 +101,35 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-
 
 }
 
 /*
+ * pt.iade.contact.model.EntitiesFacade.addContact("João Calapez", "910000001");
+ * pt.iade.contact.model.EntitiesFacade.addContact("Joana Silva", "910000002");
+ * pt.iade.contact.model.EntitiesFacade.addContact("José Silva", "910000003");
+ * pt.iade.contact.model.EntitiesFacade.addGroup("Homens");
+ * pt.iade.contact.model.EntitiesFacade.addGroup("Mulheres");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000001",
+ * "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000002",
+ * "Mulheres");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003",
+ * "Homens"); pt.iade.contact.model.EntitiesFacade.addTemplate("teste",
+ * "Isto é assim porque é");
+ * pt.iade.contact.model.EntitiesFacade.addTemplate("teste2",
+ * "Isto é assim porque é2");
+ * pt.iade.contact.model.EntitiesFacade.addTemplate("teste3",
+ * "Isto é assim porque é3");
+ * pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste", "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste2",
+ * "Mulheres");
+ * pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste3", "Homens");
+ * 
+ * System.out.println(pt.iade.contact.model.EntitiesFacade.findGroup("Homens"));
+ * 
+ * 
+ * 
  * 
  * System.out.println("**************** Contacts ****************");
  * 
@@ -130,16 +154,20 @@ public class Main extends Application {
  * System.out.println("***************** Groups *****************");
  * pt.iade.contact.model.EntitiesFacade.addGroup("Homens");
  * pt.iade.contact.model.EntitiesFacade.addGroup("Mulheres");
- * pt.iade.contact.model.EntitiesFacade.addContactToGroup("915311412", "Homens");
- * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003", "Homens");
- * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000002", "Mulheres");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("915311412",
+ * "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000003",
+ * "Homens");
+ * pt.iade.contact.model.EntitiesFacade.addContactToGroup("910000002",
+ * "Mulheres");
  * System.out.println(pt.iade.contact.model.EntitiesFacade.showAllGroups());
  * 
  * 
  * 
  * System.out.println("*************** Templates ****************");
  * 
- * pt.iade.contact.model.EntitiesFacade.addTemplate("teste", "Isto é assim porque é");
+ * pt.iade.contact.model.EntitiesFacade.addTemplate("teste",
+ * "Isto é assim porque é");
  * pt.iade.contact.model.EntitiesFacade.addTemplateToGroup("teste", "Homens");
  * 
  * 
@@ -152,7 +180,8 @@ public class Main extends Application {
  * WhatsAppSenderHandler.init();
  * System.out.println("***************************************");
  * System.out.println("**************** Envio ****************");
- * //pt.iade.contact.util.ServiceFacade.sendMessage("000", "+351915311412", "O andre é gay");
+ * //pt.iade.contact.util.ServiceFacade.sendMessage("000", "+351915311412",
+ * "O andre é gay");
  * 
  * 
  * }

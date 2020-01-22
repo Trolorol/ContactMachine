@@ -1,12 +1,16 @@
 package pt.iade.contact.model;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.Objects;
 
-public class GroupMessageTemplate {
+public class GroupMessageTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7914001267049242062L;
 	private String title;
 	private String body;
-
 	private Group group;
 
 	GroupMessageTemplate(String title, String body) {
@@ -57,10 +61,13 @@ public class GroupMessageTemplate {
 		}
 		return true;
 	}
-
+	@Override	
+	public int hashCode() {
+		return Objects.hash(title, body, group);
+	}
 	@Override
 	public String toString() {
-		return "Template title : " + title;
+		return title;
 	}
 	
 }

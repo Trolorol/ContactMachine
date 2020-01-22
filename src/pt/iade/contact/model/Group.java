@@ -1,10 +1,16 @@
 package pt.iade.contact.model;
 
-import java.util.Iterator;
+import java.io.Serializable;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
-public class Group {
+public class Group implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6584675298533575714L;
 
 	private String name;
 
@@ -92,17 +98,24 @@ public class Group {
 		}
 		return true;
 	}
+	
+	@Override	
+	public int hashCode() {
+		return Objects.hash(name, contactList, templateList);
+	}
 
-	@Override
+
 /*
 	public String toString() {
 		return name;
 		
 	}
 	*/
-	
+	@Override
 	public String toString() {
-
+		return name;
+		
+		/*
 		String returnString1 = "Name : " + name;
 		String returnString2 = "\nTemplates: ";
 		//String returnString3 = "\nContact List : ";
@@ -114,12 +127,13 @@ public class Group {
 			GroupMessageTemplate element = itrTemplate.next();
 			returnString2 += element.getTitle() + (itrTemplate.hasNext() ? ", " : "");
 		}
-		/*while (itrContact.hasNext()) {
+		while (itrContact.hasNext()) {
 			Contact element = itrContact.next();
 			returnString3 += element.getName() + (itrContact.hasNext() ? " | " : "");
-		}*/
+		}
 
 		return returnString1 + "\n" + returnString2; //+ "\n" + returnString3;
+		*/
 	}
 	
 }

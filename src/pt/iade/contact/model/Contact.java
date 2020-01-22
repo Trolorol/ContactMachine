@@ -1,20 +1,36 @@
 package pt.iade.contact.model;
 
-import java.util.Iterator;
+import java.io.Serializable;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Set;
 
-public class Contact {
+public class Contact implements Serializable {
 
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1275999734839815529L;
 	private String name;
 	private String number;
 
 	private Set<Group> groupsList;
 
+	
+	
+	/**
+	 * 
+	 * @param name
+	 * @param number
+	 * 
+	 * Method uses LinkedHashSet, abstract Class of Set, this insures that are no duplicate objects in the Set.
+	 */
 	Contact(String name, String number) {
 
-		this.groupsList = new LinkedHashSet<Group>(); // Garantia que não há duplicação de grupos, Class abstract "Set",
-														// LinkedHashSet
+		this.groupsList = new LinkedHashSet<Group>();
+														
 		this.name = name;
 		this.number = number;
 	}
@@ -58,31 +74,25 @@ public class Contact {
 		return groupsList;
 		
 	}
-	
 	@Override
-	/*public boolean equals(Object group) {
-		if( this == group){
-			return true;
-		}else {
-			if (this.getNumber().equals(group.get))
-		}
-	
-	}*/
 	public boolean equals (Object contact) {
-		if (this != contact) {//Fazer ao contrário 
-			if (contact instanceof Contact) { //saber se é uma instancai deste objeto
-				Contact c = (Contact) contact; //cast após saber que é contact 
+		if (this != contact) {
+			if (contact instanceof Contact) {
+				Contact c = (Contact) contact;
 				return c.getName().equals(this.name) && c.getNumber().equals(this.number);
 			}
 			return false;
 		}
 		return true; 
 	}
+	
+	@Override	
+	public int hashCode() {
+		return Objects.hash(name, number);
+	}
 
 	@Override
 	public String toString() {
-
-		
 		return name + "\n" + number;
 	}
 	

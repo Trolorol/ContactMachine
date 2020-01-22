@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 
 public class WhatsAppSenderHandler {
 
@@ -16,6 +15,18 @@ public class WhatsAppSenderHandler {
 	private static String ACCOUNT_SID = "";
 	private static String AUTH_TOKEN = "";
 
+	
+	
+	
+	
+	/**
+	 * Initialization of Twilio API via text file located in local storage
+	 * TODO: Change auth method:
+	 * -Option 1 GUI Input of Auth Token + Account SID
+	 * -Option 2 Git API key code storage
+	 * -Option 3 Keep this method.
+	 * -Option 4 Hardcoded (Only if theres no time!!!!)
+	 */
 	public static void init() {
 
 		

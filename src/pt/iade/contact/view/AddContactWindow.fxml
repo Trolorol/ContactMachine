@@ -14,12 +14,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="107.0" layoutY="54.0" prefHeight="25.0" prefWidth="286.0" />
-      <TextField layoutX="107.0" layoutY="100.0" prefHeight="25.0" prefWidth="286.0" />
+      <TextField fx:id="name" layoutX="107.0" layoutY="54.0" prefHeight="25.0" prefWidth="286.0" />
+      <TextField fx:id="number" layoutX="107.0" layoutY="100.0" />
       <Text layoutX="67.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
       <Text layoutX="62.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact" />
-      <ListView layoutX="107.0" layoutY="137.0" prefHeight="49.0" prefWidth="286.0" />
+      <ListView fx:id="groupList" layoutX="107.0" layoutY="137.0" prefHeight="49.0" prefWidth="286.0" />
       <Text layoutX="66.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group" />
-      <Button layoutX="441.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#btConfirm" text="Ok" />
+      <Button fx:id="confirm" layoutX="441.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#btConfirm" text="Ok" />
    </children>
 </AnchorPane>

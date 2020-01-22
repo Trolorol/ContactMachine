@@ -1,46 +1,54 @@
 package pt.iade.contact.model;
 
+import java.io.Serializable;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.swing.GroupLayout;
+public class EntitiesFacade implements Serializable {
 
-public class EntitiesFacade {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -480708598466181488L;
 
-	private static Set<Contact> contactList = new LinkedHashSet<Contact>();
-	private static Set<Group> groupList = new LinkedHashSet<Group>();
-	private static Set<GroupMessageTemplate> templateList = new LinkedHashSet<GroupMessageTemplate>();
+	private Set<Contact> contactList = new LinkedHashSet<Contact>();
+	private Set<Group> groupList = new LinkedHashSet<Group>();
+	private Set<GroupMessageTemplate> templateList = new LinkedHashSet<GroupMessageTemplate>();
 
 	/************************* Contacts management *************************/
 
-	public static void addContact(String name, String number) {
+	public synchronized void addContact(String name, String number) {
 		Contact contact = new Contact(name, number);
 		contactList.add(contact);
 	}
 
-	public static void removeContact(String number) {
+	public void editContact(String contactNumber, String newNumber, String newName) {
+		Contact c = findContact(contactNumber);
+		contactList.remove(c);
+		addContact(newNumber, newName);
 
-		Iterator<Contact> itrContact = contactList.iterator();
-
-		while (itrContact.hasNext()) {
-			Contact element = itrContact.next();
-
-			if (element.getNumber().equals(number)) {
-				contactList.remove(element);
-			}
+		for (Group element : groupList) {
+			element.removeContact(c);
+			element.addContact(findContact(newNumber));
 		}
 
 	}
 
-	public static Contact findContact(String number) {
+	public void removeContact(String number) {
 
-		Iterator<Contact> itrContact = contactList.iterator();
+		Contact c = findContact(number);
 
-		while (itrContact.hasNext()) {
-			Contact element = itrContact.next();
+		contactList.remove(c);
 
+		for (Group element : groupList) {
+			element.removeContact(c);
+		}
+
+	}
+
+	public Contact findContact(String number) {
+		for (Contact element : contactList) {
 			if (element.getNumber().equals(number)) {
 
 				return element;
@@ -50,61 +58,52 @@ public class EntitiesFacade {
 		return null;
 	}
 
-	public static void addContactToGroup(String number, String groupName) { // Adicionar contacto existente a grupo
+	public void addContactToGroup(String number, String groupName) {
 
 		Contact c = findContact(number);
 		Group g = findGroup(groupName);
 
-		Iterator<Group> itrGroup = c.listGroups().iterator();
-
 		Contact c2 = new Contact(c.getName(), c.getNumber(), c.listGroups());
 		c2.addToGroup(g);
-		
+
 		g.removeContact(c);
 		g.addContact(c2);
 
-		while (itrGroup.hasNext()) {
-			Group element = itrGroup.next();
+		for (Group element : c.listGroups()) {
 			element.removeContact(c);
 			element.addContact(c2);
 		}
 
 		contactList.remove(c);
 		contactList.add(c2);
-		
 
 	}
 
-	public static Collection<Contact> showAllContacts() {
+	public Collection<Contact> showAllContacts() {
 		return contactList;
 	}
 
 	/************************* Groups management *************************/
 
-	public static void addGroup(String name) {
+	public void addGroup(String name) {
 		Group group = new Group(name);
 		groupList.add(group);
 	}
 
-	public static void removeGroup(String name) {
-		Iterator<Group> itrGroup = groupList.iterator();
+	public void removeGroup(String name) {
 
-		while (itrGroup.hasNext()) {
-			Group element = itrGroup.next();
+		Group g = findGroup(name);
 
-			if (element.getName().equals(name)) {
-				contactList.remove(element);
-			}
+		groupList.remove(g);
+
+		for (Contact element : contactList) {
+			element.removeFromGroup(g);
 		}
-
 	}
 
-	public static Group findGroup(String name) {
-		Iterator<Group> itrGroup = groupList.iterator();
+	public Group findGroup(String name) {
 
-		while (itrGroup.hasNext()) {
-			Group element = itrGroup.next();
-
+		for (Group element : groupList) {
 			if (element.getName().equals(name)) {
 				return element;
 			}
@@ -112,43 +111,64 @@ public class EntitiesFacade {
 		return null;
 	}
 
-	public static Collection<Group> showAllGroups() {
+	public Collection<Group> showAllGroups() {
 		return groupList;
 	}
 
+	public void editGroup(String oldName, String newName) {
+
+		Group g = findGroup(oldName);
+		g.setName(newName);
+	}
+
 	/************************* Templates management *************************/
-	public static void addTemplate(String title, String body) { // inicializa ponteiro de grupo a null
+
+	/**
+	 * 
+	 * @param title
+	 * @param body
+	 * 
+	 *              addTemplate method without insertion of group. group variable
+	 *              initialized with null value, see line 13 at
+	 *              pt.iade.contact.model.GroupMessageTemplate
+	 */
+	public void addTemplate(String title, String body) {
 		GroupMessageTemplate template = new GroupMessageTemplate(title, body);
 		templateList.add(template);
 
 	}
+	
+	public void editTemplate(String oldName, String newTitle, String newBody) {
+		GroupMessageTemplate mt = findTemplate(oldName);
+		
+		mt.setBody(newBody);
+		mt.setTitle(newTitle);
+		
 
-	public static void groupAddTemplate(String title, String body, Group group) { // Açternativa ao addTemplate, cria já
-																					// agregado a um grupo
+		
+	}
+
+	public void groupAddTemplate(String title, String body, Group group) {
+
 		GroupMessageTemplate template = new GroupMessageTemplate(title, body, group);
 		templateList.add(template);
 
 	}
 
-	public static void removeTemplate(String title) {
-		Iterator<GroupMessageTemplate> itrTemplate = templateList.iterator();
+	public void removeTemplate(String title) {
 
-		while (itrTemplate.hasNext()) {
-			GroupMessageTemplate element = itrTemplate.next();
-
+		for (GroupMessageTemplate element : templateList) {
 			if (element.getTitle().equals(title)) {
 				templateList.remove(element);
 			}
+
 		}
 
 	}
 
-	public static GroupMessageTemplate findTemplate(String title) {
-		Iterator<GroupMessageTemplate> itrTemplate = templateList.iterator();
+	public GroupMessageTemplate findTemplate(String title) {
 
-		while (itrTemplate.hasNext()) {
-			GroupMessageTemplate element = itrTemplate.next();
-
+		for (GroupMessageTemplate element : templateList) {
 			if (element.getTitle().equals(title)) {
 				return element;
 			}
@@ -156,15 +176,15 @@ public class EntitiesFacade {
 		return null;
 	}
 
-	public static Collection<GroupMessageTemplate> showAllTemplates() {
+	public Collection<GroupMessageTemplate> showAllTemplates() {
 		return templateList;
 
 	}
 
-	public static void addTemplateToGroup(String title, String groupName) {
+	public void addTemplateToGroup(String title, String groupName) {
 
-		GroupMessageTemplate gTemplate = findTemplate(title); // Recebe objeto do tipo GroupMessageTemplate
-		Group g = findGroup(groupName); // Recebe obejto do tipo Group
+		GroupMessageTemplate gTemplate = findTemplate(title);
+		Group g = findGroup(groupName);
 
 		g.addTemplate(gTemplate);
 	}

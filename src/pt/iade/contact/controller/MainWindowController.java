@@ -1,5 +1,6 @@
 package pt.iade.contact.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,12 +12,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import pt.iade.contact.Main;
 import pt.iade.contact.model.Contact;
-import pt.iade.contact.model.EntitiesFacade;
 import pt.iade.contact.model.Group;
 import pt.iade.contact.model.GroupMessageTemplate;
 
@@ -47,8 +52,8 @@ public class MainWindowController implements Initializable{
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) { //TODO clear selection button
-		ArrayList<Contact> contactListAux = new ArrayList<Contact> (EntitiesFacade.showAllContacts());
-		ArrayList<Group> groupListAux = new ArrayList<Group> (EntitiesFacade.showAllGroups());
+		ArrayList<Contact> contactListAux = new ArrayList<Contact> (Main.facade.showAllContacts());
+		ArrayList<Group> groupListAux = new ArrayList<Group> (Main.facade.showAllGroups());
 		
 		
 		this.contactListProperty = new SimpleListProperty<Contact>();
@@ -90,10 +95,22 @@ public class MainWindowController implements Initializable{
 		});
 	}
 	
+	/*
 	@FXML
 	public void btManagementAction() {
 		pt.iade.contact.Main.openforkWindow();
 	}
+	*/
+	@FXML
+	public void btManagementAction() throws IOException //TODO Fork window has to close after selection.
+	{
+	        Parent part = FXMLLoader.load(getClass().getResource("../view/ForkMenagementWindow.fxml"));
+	        Stage stage = new Stage();
+	        Scene scene = new Scene(part);
+	        stage.setScene(scene);
+	        stage.show();
+	}
+	
 	
 	@FXML
 	public void btSendAction() {
@@ -108,7 +125,7 @@ public class MainWindowController implements Initializable{
 	
 	@FXML
 	public Collection<Group> showGroupList() {
-		return pt.iade.contact.model.EntitiesFacade.showAllGroups();
+		return Main.facade.showAllGroups();
 		
 	}
 	
