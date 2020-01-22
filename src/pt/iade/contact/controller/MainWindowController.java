@@ -105,22 +105,23 @@ public class MainWindowController implements Initializable{
 	
 
 	/*
-	 * method to control the Management Button shown in Main widow, this opens a for window to select Group or Contacts Management.
-	 * TODO: Fork window has to close after operation Selection, see ForkWindowManagementController in controller package.
+	 * method to control the Management Button shown in Main widow, this opens a fork window to select Group or Contacts Management.
+	 * TODO: Fork Window has open on top of main window.
 	 */
 	@FXML
-	public void btManagementAction() throws IOException
-	{
-	        Parent part = FXMLLoader.load(getClass().getResource("../view/ForkMenagementWindow.fxml"));
+	public void btManagementAction() throws IOException{
+	       
+		pt.iade.contact.Main.openforkWindow();
+		/*Parent part = FXMLLoader.load(getClass().getResource("../view/ForkMenagementWindow.fxml"));
 	        Stage stage = new Stage();
 	        Scene scene = new Scene(part);
 	        stage.setScene(scene);
-	        stage.show();
+	        stage.show();*/
 	}
 	
 	/*
 	 * Send Button, this will pass data to service Facade.
-	 * TODO: this action will recive a Set of contacts, is missing a iterator to send one message to all contacts in set.
+	 * TODO: this action will receive a Set of contacts, is missing a iterator to send one message to all contacts in set.
 	 */
 	@FXML
 	public void btSendAction() {
