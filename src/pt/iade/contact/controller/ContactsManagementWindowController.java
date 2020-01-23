@@ -11,13 +11,9 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 import pt.iade.contact.Main;
 import pt.iade.contact.model.Contact;
 
@@ -58,21 +54,28 @@ public class ContactsManagementWindowController implements Initializable {
 	 */
 	public void addContactBt() throws IOException
 	{
+		pt.iade.contact.Main.openAddContactWindow();
+		/*
 		Parent part = FXMLLoader.load(getClass().getResource("../view/AddContactWindow.fxml"));
 		Stage stage = new Stage();
 		Scene scene = new Scene(part);
 		stage.setScene(scene);
 		stage.show();
+		*/
 	}
 
 	public void editContactBt() {
-		System.out.println("Click");
 		pt.iade.contact.Main.openAddContactWindow();
-		System.out.println("Click");
+		
 	}
-
+	/*Delete Contact Button
+	 * Receives a number of type String and fetches the number from contactList 
+	 * and using the .removeContact from the facade removes it from the rest of the program.
+	 * 
+	 */
 	public void deleteContactBt() {
-		System.out.println("Click");
+		String number = contactList.getSelectionModel().getSelectedItem().getNumber();
+		Main.facade.removeContact(number);
 
 	}
 	

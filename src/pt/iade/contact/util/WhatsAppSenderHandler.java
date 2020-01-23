@@ -41,12 +41,12 @@ public class WhatsAppSenderHandler {
 
 	// pt.iade.contact.util.serviceFacade.sendMessage("+1 415 523 8886", "+351915311412");
 
-	static void sendText(String fromNumber, String toNumber, String finalMessage) {
+	static void sendText(String toNumber, String finalMessage) {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 		System.out.println(ACCOUNT_SID);
 		System.out.println(AUTH_TOKEN);
-		fromNumber = "whatsapp:+14155238886";
-		toNumber = "whatsapp:" + toNumber;
+		String fromNumber = "whatsapp:+14155238886";
+		toNumber = "whatsapp:+351" + toNumber;
 		System.out.println("To: " + toNumber + "\nFrom: " + fromNumber);
 		Message message = Message.creator(new com.twilio.type.PhoneNumber(toNumber),
 				new com.twilio.type.PhoneNumber(fromNumber), finalMessage).create();

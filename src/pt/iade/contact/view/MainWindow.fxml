@@ -17,7 +17,7 @@
       <ListView fx:id="groupList" layoutX="342.0" layoutY="121.0" prefHeight="152.0" prefWidth="510.0" />
       <TextField fx:id="message" layoutX="341.0" layoutY="459.0" prefHeight="152.0" prefWidth="510.0" />
       <ListView fx:id="templateList" layoutX="342.0" layoutY="321.0" prefHeight="81.0" prefWidth="510.0" />
-      <Button layoutX="778.0" layoutY="625.0" mnemonicParsing="false" text="Send">
+      <Button layoutX="778.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#btSendAction" text="Send">
          <font>
             <Font size="20.0" />
          </font></Button>

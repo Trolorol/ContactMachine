@@ -17,7 +17,7 @@ import javafx.scene.control.ListView;
 import pt.iade.contact.Main;
 import pt.iade.contact.model.Group;
 
-public class GroupsManagementController implements Initializable {
+public class GroupsManagementWindowController implements Initializable {
 
 	@FXML
 	private Button addGroupBt;

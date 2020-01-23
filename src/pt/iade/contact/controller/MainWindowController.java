@@ -12,18 +12,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import pt.iade.contact.Main;
 import pt.iade.contact.model.Contact;
 import pt.iade.contact.model.Group;
 import pt.iade.contact.model.GroupMessageTemplate;
+import pt.iade.contact.util.WhatsAppSenderHandler;
 
 public class MainWindowController implements Initializable{
 	
@@ -44,6 +41,7 @@ public class MainWindowController implements Initializable{
 	@FXML
 	private TextField message;
 	
+	private String messageText = "";
 	/*
 	 * initialize method was overridden in order to transform Sets in ArraysLists
 	 * This method will create ArraysLists from Contact and Group types, then it will call the method .showAllContacts and .showAllGroups from Main.facade
@@ -75,26 +73,23 @@ public class MainWindowController implements Initializable{
 		 * Implemented method to display Contacts and templates aggregated to the selected Group in MainWindow.
 		 * changed method was overridden in order to establish a new listener.
 		 */
-		this.groupList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Group>() { //O que faz quando se seleciona um grupo na main window
+		this.groupList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Group>() {
 			@Override
 			public void changed(ObservableValue<? extends Group> observable, Group oldValue, Group newValue) {
 				ArrayList<GroupMessageTemplate> templateListAux = new ArrayList<GroupMessageTemplate> (newValue.getTemplateList());
 				ArrayList<Contact> contactListAux = new ArrayList<Contact> (newValue.getContactList());
-				
 				templateListProperty.set(FXCollections.observableArrayList(templateListAux));
-				
 				contactListProperty.set(FXCollections.observableArrayList(contactListAux));
 			}
 		});
 		
 		/*
 		 * Implemented method to display selected template in TextField in MainWindow
-		 * changed method was overridden in order to establish a new listner.
+		 * changed method was overridden in order to establish a new listener.
 		 */
-		this.templateList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GroupMessageTemplate>() { // O que faz quando se seleciona um template 
+		this.templateList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GroupMessageTemplate>() {
 			@Override
 			public void changed(ObservableValue<? extends GroupMessageTemplate> observable, GroupMessageTemplate oldValue, GroupMessageTemplate newValue) {
-				String messageText = "";
 				if(newValue != null) {
 					messageText = newValue.getBody();
 				}
@@ -125,6 +120,14 @@ public class MainWindowController implements Initializable{
 	 */
 	@FXML
 	public void btSendAction() {
+		WhatsAppSenderHandler.init();
+		Group selection = this.groupList.getSelectionModel().getSelectedItem();
+		String message = this.message.getText();
+		for(Contact c : selection.listContacts()) {
+			pt.iade.contact.util.ServiceFacade.sendMessage(c.getNumber(), message);
+			
+			//whatsappFacade.sendMessage(c.getNumber(), message)
+		}
 		// vou buscar o grupo selecion
 		// vou a text box buscar a mensagem 
 		// for loop para enviar mensagem 

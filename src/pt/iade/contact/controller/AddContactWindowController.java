@@ -63,6 +63,7 @@ public class AddContactWindowController implements Initializable {
 		Main.facade.addContact(name, number);
 		Main.facade.addContactToGroup(number, group);
 		System.out.println(Main.facade.showAllContacts());
+		Main.openContactManagementWindow();
 	}
 
 	@FXML

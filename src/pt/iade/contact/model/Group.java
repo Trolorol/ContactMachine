@@ -101,26 +101,5 @@ public class Group implements Serializable {
 	@Override
 	public String toString() {
 		return name;
-		
-		/*
-		String returnString1 = "Name : " + name;
-		String returnString2 = "\nTemplates: ";
-		//String returnString3 = "\nContact List : ";
-
-		Iterator<GroupMessageTemplate> itrTemplate = templateList.iterator();
-		Iterator<Contact> itrContact = contactList.iterator();
-
-		while (itrTemplate.hasNext()) {
-			GroupMessageTemplate element = itrTemplate.next();
-			returnString2 += element.getTitle() + (itrTemplate.hasNext() ? ", " : "");
-		}
-		while (itrContact.hasNext()) {
-			Contact element = itrContact.next();
-			returnString3 += element.getName() + (itrContact.hasNext() ? " | " : "");
-		}
-
-		return returnString1 + "\n" + returnString2; //+ "\n" + returnString3;
-		*/
 	}
-	
 }

@@ -17,15 +17,16 @@ public class Contact implements Serializable {
 	 * @param name
 	 * @param number
 	 * 
-	 * Method uses LinkedHashSet, abstract Class of Set, this insures that are no duplicate objects in the Set.
+	 *               Method uses LinkedHashSet, abstract Class of Set, this insures
+	 *               that are no duplicate objects in the Set.
 	 */
 	Contact(String name, String number) {
-		this.groupsList = new LinkedHashSet<Group>();											
+		this.groupsList = new LinkedHashSet<Group>();
 		this.name = name;
 		this.number = number;
 	}
 
-	Contact(String name, String number, Set <Group> groupsList) {
+	Contact(String name, String number, Set<Group> groupsList) {
 		this.name = name;
 		this.number = number;
 		this.groupsList = groupsList;
@@ -46,25 +47,25 @@ public class Contact implements Serializable {
 	void setNumber(String number) {
 		this.number = number;
 	}
-	
+
 	void addToGroup(Group group) {
 		this.groupsList.add(group);
 	}
-	
+
 	void removeFromGroup(Group group) {
 		this.groupsList.remove(group);
 	}
-	
+
 	public boolean isInGroup(Group group) {
 		return this.groupsList.contains(group);
 	}
-	
+
 	public Set<Group> listGroups() {
-		return groupsList;	
+		return groupsList;
 	}
 
 	@Override
-	public boolean equals (Object contact) {
+	public boolean equals(Object contact) {
 		if (this != contact) {
 			if (contact instanceof Contact) {
 				Contact c = (Contact) contact;
@@ -72,10 +73,10 @@ public class Contact implements Serializable {
 			}
 			return false;
 		}
-		return true; 
+		return true;
 	}
-	
-	@Override	
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(name, number);
 	}
@@ -84,21 +85,4 @@ public class Contact implements Serializable {
 	public String toString() {
 		return name + "\n" + number;
 	}
-	
 }
-	/*
-	@Override
-	public String toString() {
-		//String returnString = "Contact name : " + name + "\nNumber : " + number + "\nGroupsList : ";
-		String returnString =  name + "\n" + number;
-		Iterator <Group> itr = groupsList.iterator();
-		while(itr.hasNext()) {
-	           Group element = itr.next();
-	           returnString += element.getName() + (itr.hasNext() ? " | " : "");
-	       }
-		
-		return returnString;
-	}
-	*/
-	
-

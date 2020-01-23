@@ -15,6 +15,14 @@ import pt.iade.contact.model.EntitiesFacade;
 
 public class Main extends Application {
 
+	/*
+	 * @author João Calapez Coelho 
+	 * @version 1.0
+	 * 
+	 */
+	
+	
+	
 	private static Stage mainStage;
 	public static EntitiesFacade facade;
 
@@ -26,10 +34,14 @@ public class Main extends Application {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		mainStage.setScene(scene);
 		openMainWindow();
-		// openAddContactWindow();
 		mainStage.show();
 	}
 
+	/**
+	 * main method
+	 * This class triggers a Serializable event that stores all object information in data/state.dat
+	 * 
+	 */
 	public static void main(String[] args) {
 		ObjectInputStream ois;
 		try {
