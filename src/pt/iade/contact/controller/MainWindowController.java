@@ -1,11 +1,9 @@
 package pt.iade.contact.controller;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
-
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
@@ -40,7 +38,7 @@ public class MainWindowController implements Initializable{
 	private ListProperty<GroupMessageTemplate> templateListProperty;
 	@FXML
 	private TextField message;
-	
+
 	private String messageText = "";
 	/*
 	 * initialize method was overridden in order to transform Sets in ArraysLists
@@ -66,9 +64,6 @@ public class MainWindowController implements Initializable{
 		//GroupMessageTemplate Set conversion to ArrayList for JavaFx display.
 		this.templateListProperty = new SimpleListProperty<GroupMessageTemplate>();
 		this.templateList.itemsProperty().bind(this.templateListProperty);
-		
-		
-		
 		/*
 		 * Implemented method to display Contacts and templates aggregated to the selected Group in MainWindow.
 		 * changed method was overridden in order to establish a new listener.
@@ -82,7 +77,6 @@ public class MainWindowController implements Initializable{
 				contactListProperty.set(FXCollections.observableArrayList(contactListAux));
 			}
 		});
-		
 		/*
 		 * Implemented method to display selected template in TextField in MainWindow
 		 * changed method was overridden in order to establish a new listener.
@@ -97,15 +91,12 @@ public class MainWindowController implements Initializable{
 			}
 		});
 	}
-	
-
 	/*
 	 * method to control the Management Button shown in Main widow, this opens a fork window to select Group or Contacts Management.
 	 * TODO: Fork Window has open on top of main window.
 	 */
 	@FXML
 	public void btManagementAction() throws IOException{
-	       
 		pt.iade.contact.Main.openforkWindow();
 		/*Parent part = FXMLLoader.load(getClass().getResource("../view/ForkMenagementWindow.fxml"));
 	        Stage stage = new Stage();
@@ -113,7 +104,6 @@ public class MainWindowController implements Initializable{
 	        stage.setScene(scene);
 	        stage.show();*/
 	}
-	
 	/*
 	 * Send Button, this will pass data to service Facade.
 	 * TODO: this action will receive a Set of contacts, is missing a iterator to send one message to all contacts in set.
@@ -131,27 +121,15 @@ public class MainWindowController implements Initializable{
 		// vou buscar o grupo selecion
 		// vou a text box buscar a mensagem 
 		// for loop para enviar mensagem 
-		
-		
 	}
-	
-	
 	@FXML
 	public void showContactList() {
-		
 	}
-	
 	@FXML
 	public Collection<Group> showGroupList() {
 		return Main.facade.showAllGroups();
-		
 	}
-	
 	@FXML
 	public void showTemplateList() {
-		
 	}
-	
-	
-	
 }
